@@ -1,0 +1,327 @@
+Last commit : Fri Jan 30 14:35:25 2015 -0600
+Test:
+Buildfile: /Users/jennie/courses/eecs339/infrastructure/grading/lab1/repos/homework-solns-IMV104/lab/build.xml
+
+compile:
+    [mkdir] Created dir: /Users/jennie/courses/eecs339/infrastructure/grading/lab1/repos/homework-solns-IMV104/lab/bin/src
+    [javac] Compiling 33 source files to /Users/jennie/courses/eecs339/infrastructure/grading/lab1/repos/homework-solns-IMV104/lab/bin/src
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] 1 warning
+
+testcompile:
+    [mkdir] Created dir: /Users/jennie/courses/eecs339/infrastructure/grading/lab1/repos/homework-solns-IMV104/lab/bin/test
+    [javac] Compiling 11 source files to /Users/jennie/courses/eecs339/infrastructure/grading/lab1/repos/homework-solns-IMV104/lab/bin/test
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] 1 warning
+
+test:
+    [junit] Running simpledb.CatalogTest
+    [junit] Testsuite: simpledb.CatalogTest
+    [junit] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 sec
+    [junit] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 sec
+    [junit] 
+    [junit] Testcase: getTupleDesc took 0.012 sec
+    [junit] Testcase: getTableId took 0.001 sec
+    [junit] Testcase: getDatabaseFile took 0 sec
+    [junit] Testcase: handleDuplicateNames took 0 sec
+    [junit] Testcase: handleDuplicateIds took 0.001 sec
+    [junit] Running simpledb.HeapFileReadTest
+    [junit] Testsuite: simpledb.HeapFileReadTest
+    [junit] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.079 sec
+    [junit] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.079 sec
+    [junit] ------------- Standard Output ---------------
+    [junit] Slots used: 20EmptySlots: 484total: 504
+    [junit] Slots used: 3EmptySlots: 501total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: getId took 0.031 sec
+    [junit] Testcase: getTupleDesc took 0.001 sec
+    [junit] Testcase: numPages took 0.001 sec
+    [junit] Testcase: readPage took 0.01 sec
+    [junit] Testcase: testIteratorBasic took 0.005 sec
+    [junit] Testcase: testIteratorClose took 0.01 sec
+    [junit] Running simpledb.HeapPageIdTest
+    [junit] Testsuite: simpledb.HeapPageIdTest
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec
+    [junit] 
+    [junit] Testcase: equals took 0.009 sec
+    [junit] Testcase: getTableId took 0.001 sec
+    [junit] Testcase: pageno took 0 sec
+    [junit] Testcase: testHashCode took 0 sec
+    [junit] Running simpledb.HeapPageReadTest
+    [junit] Testsuite: simpledb.HeapPageReadTest
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec
+    [junit] ------------- Standard Output ---------------
+    [junit] Slots used: 20EmptySlots: 484total: 504
+    [junit] Slots used: 20EmptySlots: 484total: 504
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: getId took 0.02 sec
+    [junit] Testcase: getSlot took 0.002 sec
+    [junit] Testcase: getNumEmptySlots took 0.002 sec
+    [junit] Testcase: testIterator took 0.002 sec
+    [junit] Running simpledb.RecordIdTest
+    [junit] Testsuite: simpledb.RecordIdTest
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec
+    [junit] 
+    [junit] Testcase: equals took 0.011 sec
+    [junit] Testcase: getPageId took 0 sec
+    [junit] Testcase: tupleno took 0.001 sec
+    [junit] Testcase: hCode took 0 sec
+    [junit] Running simpledb.TupleDescTest
+    [junit] Testsuite: simpledb.TupleDescTest
+    [junit] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 sec
+    [junit] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 sec
+    [junit] 
+    [junit] Testcase: combine took 0.01 sec
+    [junit] Testcase: getType took 0.001 sec
+    [junit] Testcase: getSize took 0.001 sec
+    [junit] Testcase: nameToId took 0.023 sec
+    [junit] Testcase: numFields took 0.001 sec
+    [junit] Testcase: testEquals took 0 sec
+    [junit] Running simpledb.TupleTest
+    [junit] Testsuite: simpledb.TupleTest
+    [junit] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec
+    [junit] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec
+    [junit] 
+    [junit] Testcase: modifyFields took 0.012 sec
+    [junit] Testcase: getTupleDesc took 0 sec
+    [junit] Testcase: modifyRecordId took 0.001 sec
+
+BUILD SUCCESSFUL
+Total time: 4 seconds
+Buildfile: /Users/jennie/courses/eecs339/infrastructure/grading/lab1/repos/homework-solns-IMV104/lab/build.xml
+
+compile:
+
+testcompile:
+
+systemtest:
+    [junit] Running simpledb.systemtest.ScanTest
+    [junit] Testsuite: simpledb.systemtest.ScanTest
+    [junit] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.634 sec
+    [junit] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.634 sec
+    [junit] ------------- Standard Output ---------------
+    [junit] Slots used: 0EmptySlots: 992total: 992
+    [junit] Slots used: 1EmptySlots: 991total: 992
+    [junit] Slots used: 2EmptySlots: 990total: 992
+    [junit] Slots used: 124EmptySlots: 481total: 992
+    [junit] Slots used: 124EmptySlots: 480total: 992
+    [junit] Slots used: 124EmptySlots: 479total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 31EmptySlots: 961total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 32EmptySlots: 960total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 33EmptySlots: 959total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 71EmptySlots: 921total: 992
+    [junit] Slots used: 0EmptySlots: 504total: 504
+    [junit] Slots used: 1EmptySlots: 503total: 504
+    [junit] Slots used: 2EmptySlots: 502total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 7EmptySlots: 497total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 8EmptySlots: 496total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 9EmptySlots: 495total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 15EmptySlots: 489total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 16EmptySlots: 488total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 17EmptySlots: 487total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 41total: 504
+    [junit] Slots used: 0EmptySlots: 344total: 337
+    [junit] Slots used: 1EmptySlots: 343total: 337
+    [junit] Slots used: 2EmptySlots: 342total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 170total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 169total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 168total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 12EmptySlots: 332total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 13EmptySlots: 331total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 14EmptySlots: 330total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 7total: 337
+    [junit] Slots used: 43EmptySlots: 69total: 337
+    [junit] Slots used: 0EmptySlots: 256total: 254
+    [junit] Slots used: 1EmptySlots: 255total: 254
+    [junit] Slots used: 2EmptySlots: 254total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 3EmptySlots: 253total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 4EmptySlots: 252total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 5EmptySlots: 251total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 7EmptySlots: 249total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 8EmptySlots: 248total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 9EmptySlots: 247total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 2total: 254
+    [junit] Slots used: 32EmptySlots: 99total: 254
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 63EmptySlots: 0total: 504
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] Slots used: 124EmptySlots: 0total: 992
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: testSmall took 0.415 sec
+    [junit] Testcase: testRewind took 0.003 sec
+    [junit] Testcase: testCache took 0.196 sec
+
+BUILD SUCCESSFUL
+Total time: 1 second
