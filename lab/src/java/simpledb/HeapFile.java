@@ -15,8 +15,11 @@ import java.util.*;
  */
 public class HeapFile implements DbFile {
 
-	private File heapFile;
-	private TupleDesc description;
+    private final File f;
+    private final TupleDesc td;
+    private final int tableid ;
+    // a hack to remember the last page that had a free slot
+    private volatile int lastEmptyPage = -1;
 
     /**
      * Constructs a heap file backed by the specified file.
@@ -26,9 +29,9 @@ public class HeapFile implements DbFile {
      *            file.
      */
     public HeapFile(File f, TupleDesc td) {
-        // some code goes here
-    	this.heapFile = f;
-    	this.description = td;
+        this.f = f;
+        this.tableid = f.getAbsoluteFile().hashCode();
+        this.td = td;
     }
 
     /**
@@ -37,8 +40,7 @@ public class HeapFile implements DbFile {
      * @return the File backing this HeapFile on disk.
      */
     public File getFile() {
-        // some code goes here
-        return this.heapFile;
+        return f;
     }
 
     /**
@@ -51,9 +53,7 @@ public class HeapFile implements DbFile {
      * @return an ID uniquely identifying this HeapFile.
      */
     public int getId() {
-        // some code goes here
-    	return heapFile.getAbsoluteFile().hashCode();
-        //throw new UnsupportedOperationException("implement this");
+        return tableid;
     }
 
     /**
@@ -62,80 +62,162 @@ public class HeapFile implements DbFile {
      * @return TupleDesc of this DbFile.
      */
     public TupleDesc getTupleDesc() {
-        // some code goes here
-    	return this.description;
-        //throw new UnsupportedOperationException("implement this");
+        return td;
     }
 
     // see DbFile.java for javadocs
     public Page readPage(PageId pid) {
-        // some code goes here
-    	// table id of required page does not match the table id of this file
-    	if(pid.getTableId() != getId()) {
-    		throw new IllegalArgumentException("Page does not exist in this file");
-    	}
-    	try {
-			RandomAccessFile randomAccessFile = new RandomAccessFile(this.heapFile, "r");
-			
-			// array to store page data
-			byte[] pageData = new byte[BufferPool.getPageSize()];
-			
-			// get offset into the random access file
-			int offset = pid.pageNumber() * BufferPool.getPageSize();
-			randomAccessFile.seek(offset);
-			
-			// read the page data
-			randomAccessFile.read(pageData, 0, BufferPool.getPageSize());
-			randomAccessFile.close();
-			return new HeapPage((HeapPageId)pid, pageData);
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// we should not reach here
-		throw new IllegalArgumentException();
-    	
-    
+        HeapPageId id = (HeapPageId) pid;
+        BufferedInputStream bis = null;
+
+        try {
+            bis = new BufferedInputStream(new FileInputStream(f));
+            byte pageBuf[] = new byte[BufferPool.getPageSize()];
+            if (bis.skip(id.pageNumber() * BufferPool.getPageSize()) != id
+                    .pageNumber() * BufferPool.getPageSize()) {
+                throw new IllegalArgumentException(
+                        "Unable to seek to correct place in heapfile");
+            }
+            int retval = bis.read(pageBuf, 0, BufferPool.getPageSize());
+            if (retval == -1) {
+                throw new IllegalArgumentException("Read past end of table");
+            }
+            if (retval < BufferPool.getPageSize()) {
+                throw new IllegalArgumentException("Unable to read "
+                        + BufferPool.getPageSize() + " bytes from heapfile");
+            }
+            Debug.log(1, "HeapFile.readPage: read page %d", id.pageNumber());
+            HeapPage p = new HeapPage(id, pageBuf);
+            return p;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            // Close the file on success or error
+            try {
+                if (bis != null)
+                    bis.close();
+            } catch (IOException ioe) {
+                // Ignore failures closing the file
+            }
+        }
     }
 
     // see DbFile.java for javadocs
     public void writePage(Page page) throws IOException {
-        // some code goes here
-        // not necessary for lab1
+        HeapPage p = (HeapPage) page;
+        // System.out.println("Writing back page " + p.getId().pageno());
+        byte[] data = p.getPageData();
+        RandomAccessFile rf = new RandomAccessFile(f, "rw");
+        rf.seek(p.getId().pageNumber() * BufferPool.getPageSize());
+        rf.write(data);
+        rf.close();
     }
 
     /**
      * Returns the number of pages in this HeapFile.
      */
     public int numPages() {
-        // some code goes here
-    	int result = (int) (this.heapFile.length() / BufferPool.getPageSize());
-        return result;
+        // XXX: this seems to be rounding it down. isn't that wrong?
+        // XXX: (marcua) no - we only ever write full pages
+        return (int) (f.length() / BufferPool.getPageSize());
     }
 
     // see DbFile.java for javadocs
     public ArrayList<Page> insertTuple(TransactionId tid, Tuple t)
             throws DbException, IOException, TransactionAbortedException {
-        // some code goes here
-        return null;
-        // not necessary for lab1
+        ArrayList<Page> dirtypages = new ArrayList<Page>();
+
+        // find the first page with a free slot in it
+        int i = 0;
+        if (lastEmptyPage != -1)
+            i = lastEmptyPage;
+        // XXX: Would it not be better to scan from numPages() to 0 since the
+        // last pages are more likely to have empty slots?
+        for (; i < numPages(); i++) {
+            Debug.log(
+                    4,
+                    "HeapFile.addTuple: checking free slots on page %d of table %d",
+                    i, tableid);
+            HeapPageId pid = new HeapPageId(tableid, i);
+            HeapPage p = (HeapPage) Database.getBufferPool().getPage(tid, pid,
+                    Permissions.READ_WRITE);
+
+            // no empty slots
+            //
+            // think about why we have to invoke releasePage here.
+            // can you think of ways where
+            if (p.getNumEmptySlots() == 0) {
+                Debug.log(
+                        4,
+                        "HeapFile.addTuple: no free slots on page %d of table %d",
+                        i, tableid);
+
+                // we mistakenly got here through lastEmptyPage, just add a page
+                // XXX we know this isn't very pretty.
+                if (lastEmptyPage != -1) {
+                    lastEmptyPage = -1;
+                    break;
+                }
+                continue;
+            }
+            Debug.log(4, "HeapFile.addTuple: %d free slots in table %d",
+                    p.getNumEmptySlots(), tableid);
+            p.insertTuple(t);
+            lastEmptyPage = p.getId().pageNumber();
+            // System.out.println("nfetches = " + nfetches);
+            dirtypages.add(p);
+            return dirtypages;
+        }
+
+        // no empty slots -- append a page
+        // This must be synchronized so that the append operation is atomic.
+        // Otherwise a second
+        // thread could be blocked just after opening the file. The first
+        // transaction flushes
+        // new tuples to the page. The second transaction then overwrites the
+        // data with an empty
+        // page, losing the new data.
+        synchronized (this) {
+            BufferedOutputStream bw = new BufferedOutputStream(
+                    new FileOutputStream(f, true));
+            byte[] emptyData = HeapPage.createEmptyPageData();
+            bw.write(emptyData);
+            bw.close();
+        }
+
+        // by virtue of writing these bits to the HeapFile, it is now visible.
+        // so some other dude may have obtained a read lock on the empty page
+        // we just created---which is ok, we haven't yet added the tuple.
+        // we just need to lock the page before we can add the tuple to it.
+
+        HeapPage p = (HeapPage) Database.getBufferPool()
+                .getPage(tid, new HeapPageId(tableid, numPages() - 1),
+                        Permissions.READ_WRITE);
+        p.insertTuple(t);
+        lastEmptyPage = p.getId().pageNumber();
+        // System.out.println("nfetches = " + nfetches);
+        dirtypages.add(p);
+        return dirtypages;
     }
 
     // see DbFile.java for javadocs
     public ArrayList<Page> deleteTuple(TransactionId tid, Tuple t) throws DbException,
             TransactionAbortedException {
-        // some code goes here
-        return null;
-        // not necessary for lab1
+        HeapPage p = (HeapPage) Database.getBufferPool().getPage(
+                tid,
+                new HeapPageId(tableid, t.getRecordId().getPageId()
+                        .pageNumber()), Permissions.READ_WRITE);
+        p.deleteTuple(t);
+        ArrayList<Page> pages = new ArrayList<Page>();
+        pages.add(p);
+        return pages;
     }
 
     // see DbFile.java for javadocs
     public DbFileIterator iterator(TransactionId tid) {
-        // some code goes here
-    	return new HeapFileIterator(tid, this);
-    
+        return new HeapFileIterator(this, tid);
     }
 
 }
+
 

@@ -187,7 +187,8 @@ public class TupleDesc implements Serializable {
     	Type current;
 		for (int i = 0; i < numFields(); i++) {
 			current = getFieldType(i);
-			size = size + current.getLen(); //returns how many bytes it takes to store a field of current type
+			if (current != null)
+				size = size + current.getLen(); //returns how many bytes it takes to store a field of current type
 		}
 		return size;
     }
@@ -250,7 +251,7 @@ public class TupleDesc implements Serializable {
     		for (int i = 0; i < numFields(); i++)
     		{
     			//checks to see if the nth type is equal
-    			if (!items[i].toString().equals(castedTupleDesc.items[i].toString()))
+    			if (items[i].fieldType != castedTupleDesc.items[i].fieldType)
         			return false;
     		}
     		return true;

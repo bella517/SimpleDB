@@ -1,0 +1,430 @@
+Last commit : Thu Mar 12 23:12:31 2015 -0500
+Test:
+Buildfile: /Users/jennie/courses/eecs339/infrastructure/grading/lab4/repos/homework-solns-IMV104/lab/build.xml
+
+compile:
+    [mkdir] Created dir: /Users/jennie/courses/eecs339/infrastructure/grading/lab4/repos/homework-solns-IMV104/lab/bin/src
+    [javac] Compiling 76 source files to /Users/jennie/courses/eecs339/infrastructure/grading/lab4/repos/homework-solns-IMV104/lab/bin/src
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] /Users/jennie/courses/eecs339/infrastructure/grading/lab4/repos/homework-solns-IMV104/lab/src/java/simpledb/LockManager.java:93: warning: [unchecked] unchecked method invocation: method put in class HashMap is applied to given types
+    [javac] 			 sharedLocksOnPage.put(pid, sharedLockedTIDs);
+    [javac] 			                      ^
+    [javac]   required: K,V
+    [javac]   found: PageId,Set
+    [javac]   where K,V are type-variables:
+    [javac]     K extends Object declared in class HashMap
+    [javac]     V extends Object declared in class HashMap
+    [javac] /Users/jennie/courses/eecs339/infrastructure/grading/lab4/repos/homework-solns-IMV104/lab/src/java/simpledb/LockManager.java:93: warning: [unchecked] unchecked conversion
+    [javac] 			 sharedLocksOnPage.put(pid, sharedLockedTIDs);
+    [javac] 			                            ^
+    [javac]   required: V
+    [javac]   found:    Set
+    [javac]   where V is a type-variable:
+    [javac]     V extends Object declared in class HashMap
+    [javac] 3 warnings
+
+testcompile:
+    [mkdir] Created dir: /Users/jennie/courses/eecs339/infrastructure/grading/lab4/repos/homework-solns-IMV104/lab/bin/test
+    [javac] Compiling 11 source files to /Users/jennie/courses/eecs339/infrastructure/grading/lab4/repos/homework-solns-IMV104/lab/bin/test
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] Note: Some input files use or override a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 1 warning
+
+test:
+    [junit] Running simpledb.BTreeDeadlockTest
+    [junit] Testsuite: simpledb.BTreeDeadlockTest
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.731 sec
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.731 sec
+    [junit] ------------- Standard Output ---------------
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] testReadWriteDeadlock constructing deadlock:
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] 6981	51584	
+    [junit] 
+    [junit] lock granted
+    [junit] 12281	65247	
+    [junit] 
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] 7096	49964	
+    [junit] 
+    [junit] multiple shared locks on page, cannot grant
+    [junit] testReadWriteDeadlock resolved deadlock
+    [junit] ------------- ---------------- ---------------
+    [junit] ------------- Standard Error -----------------
+    [junit] simpledb.TransactionAbortedException
+    [junit] 	at simpledb.BufferPool.getPage(BufferPool.java:94)
+    [junit] 	at simpledb.BTreeFile.getPage(BTreeFile.java:542)
+    [junit] 	at simpledb.BTreeFile.getParentWithEmptySlots(BTreeFile.java:454)
+    [junit] 	at simpledb.BTreeFile.splitLeafPage(BTreeFile.java:324)
+    [junit] 	at simpledb.BTreeFile.insertTuple(BTreeFile.java:578)
+    [junit] 	at simpledb.BufferPool.insertTuple(BufferPool.java:202)
+    [junit] 	at simpledb.BTreeUtility$BTreeWriter.run(BTreeUtility.java:522)
+    [junit] simpledb.TransactionAbortedException
+    [junit] 	at simpledb.BufferPool.getPage(BufferPool.java:94)
+    [junit] 	at simpledb.BTreeFile.getPage(BTreeFile.java:542)
+    [junit] 	at simpledb.BTreeFile.getParentWithEmptySlots(BTreeFile.java:454)
+    [junit] 	at simpledb.BTreeFile.splitLeafPage(BTreeFile.java:324)
+    [junit] 	at simpledb.BTreeFile.insertTuple(BTreeFile.java:578)
+    [junit] 	at simpledb.BufferPool.insertTuple(BufferPool.java:202)
+    [junit] 	at simpledb.BTreeUtility$BTreeWriter.run(BTreeUtility.java:522)
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: testReadWriteDeadlock took 4.716 sec
+    [junit] Running simpledb.BTreeNextKeyLockingTest
+    [junit] Testsuite: simpledb.BTreeNextKeyLockingTest
+    [junit] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.179 sec
+    [junit] Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.179 sec
+    [junit] ------------- Standard Output ---------------
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: nextKeyLockingTestGreaterThan took 0.684 sec
+    [junit] 	Caused an ERROR
+    [junit] expected:<24596> but was:<24597>
+    [junit] java.lang.AssertionError: expected:<24596> but was:<24597>
+    [junit] 	at simpledb.BTreeNextKeyLockingTest.nextKeyLockingTestGreaterThan(BTreeNextKeyLockingTest.java:222)
+    [junit] 
+    [junit] Testcase: nextKeyLockingTestLessThan took 0.48 sec
+    [junit] 	Caused an ERROR
+    [junit] expected:<25602> but was:<25603>
+    [junit] java.lang.AssertionError: expected:<25602> but was:<25603>
+    [junit] 	at simpledb.BTreeNextKeyLockingTest.nextKeyLockingTestLessThan(BTreeNextKeyLockingTest.java:120)
+    [junit] 
+Buildfile: /Users/jennie/courses/eecs339/infrastructure/grading/lab4/repos/homework-solns-IMV104/lab/build.xml
+
+compile:
+
+testcompile:
+
+systemtest:
+    [junit] Running simpledb.systemtest.AbortEvictionTest
+    [junit] Testsuite: simpledb.systemtest.AbortEvictionTest
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 sec
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 sec
+    [junit] ------------- Standard Output ---------------
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: testDoNotEvictDirtyPages took 0.109 sec
+    [junit] Running simpledb.systemtest.EvictionTest
+    [junit] Testsuite: simpledb.systemtest.EvictionTest
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.121 sec
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.121 sec
+    [junit] ------------- Standard Output ---------------
+    [junit] EvictionTest creating large table
+    [junit] EvictionTest scanning large table
+    [junit] EvictionTest scan complete, testing memory usage of scan
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: testHeapFileScanWithManyPages took 1.108 sec
+    [junit] Running simpledb.systemtest.TransactionTest
+    [junit] Testsuite: simpledb.systemtest.TransactionTest
+    [junit] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 228.272 sec
+    [junit] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 228.272 sec
+    [junit] ------------- Standard Output ---------------
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] multiple shared locks on page, cannot grant
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] lock granted
+    [junit] ------------- ---------------- ---------------
+    [junit] 
+    [junit] Testcase: testSingleThread took 0.043 sec
+    [junit] Testcase: testTwoThreads took 1.034 sec
+    [junit] Testcase: testFiveThreads took 23.757 sec
+    [junit] Testcase: testTenThreads took 203.382 sec
+    [junit] Testcase: testAllDirtyFails took 0.039 sec
+
+BUILD SUCCESSFUL
+Total time: 3 minutes 50 seconds

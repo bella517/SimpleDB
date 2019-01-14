@@ -75,10 +75,7 @@ public class Tuple implements Serializable {
     	
     	//checks for valid index
     	if (i < fields.length && i >= 0)
-    	{
-    		if (f != null)
-    			fields[i] = f;
-    	}
+    		fields[i] = f;
     	else
     		System.out.print("Error: not a valid index");
     }
@@ -94,14 +91,13 @@ public class Tuple implements Serializable {
     	
     	//checks for valid index
         if (i < fields.length && i >= 0)
+        	return fields[i];
+        else
         {
-        	if (fields[i] != null)	
-        		return fields[i];
-        	else
-        		System.out.print("Error: not a valid index");
-        	
+        	System.out.println("Error: did not set index");
+        	return null;
         }
-        return null;
+       
     }
 
     /**

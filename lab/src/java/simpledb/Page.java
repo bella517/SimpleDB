@@ -1,6 +1,6 @@
 package simpledb;
 
-import java.util.Iterator;
+
 
 /**
  * Page is the interface used to represent pages that are resident in the
@@ -58,7 +58,5 @@ public interface Page {
      * copy current content to the before image.
      */
     public void setBeforeImage();
-    
-    public Iterator<Tuple> iterator();
-    
+        
 }

@@ -1,8 +1,7 @@
 package simpledb;
 
 import java.io.Serializable;
-import java.util.*;
-import java.io.*;
+
 
 
 public class Table implements Serializable {
